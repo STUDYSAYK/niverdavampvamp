@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para a Nicolly</title>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0305;--wine:#3a0712;--bord:#6b0f1f;--red:#d3122f;--ink:#f1dfe0;--dim:#b99a9e;--silver:#c9ccd1;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"],:root:not([data-theme="light"]){color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% 0%,var(--wine) 0%,var(--bg) 62%) fixed,var(--bg);color:var(--ink);font-family:"Special Elite","Courier New",monospace;line-height:1.5;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);z-index:20}
+#glitter{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+main{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:0 20px 56px}
+.view{display:none;min-height:100vh}.view.on{display:block}
+h1,h2{font-family:"Pirata One",Georgia,serif;font-weight:400;margin:0}
+button{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--silver);outline-offset:3px}
+.btn{min-height:54px;padding:0 34px;border:1px solid var(--red);border-radius:6px;background:linear-gradient(180deg,#8f1226,var(--bord));color:#fff;font-size:18px;box-shadow:0 0 22px rgba(211,18,47,.4),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn:active{transform:translateY(1px)}
+.link{background:none;border:0;color:var(--silver);font-size:14px;min-height:44px;padding:10px 0;text-decoration:underline;text-underline-offset:4px}
+#snd{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:14px;z-index:30;min-width:44px;height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--bord);background:rgba(10,3,5,.75);color:var(--ink);font-size:14px;display:none}
+#snd.show{display:block}
+/* morcegos */
+.bats{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.bat{position:absolute;left:0;width:36px;height:18px;fill:var(--red);opacity:.75;animation:fly 15s linear infinite}
+.bat:nth-child(1){top:14%}.bat:nth-child(2){top:30%;width:24px;height:12px;animation-duration:21s;animation-delay:-8s;opacity:.5}.bat:nth-child(3){top:62%;width:30px;height:15px;animation-duration:18s;animation-delay:-13s;opacity:.6}
+@keyframes fly{from{transform:translate(-60px,0)}50%{transform:translate(50vw,22px) scaleY(.7)}to{transform:translate(110vw,-10px)}}
+/* splash */
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100vh;padding:40px 0;gap:18px}
+.center p{margin:0;color:var(--dim);font-size:14px}
+/* celular */
+.phone{width:min(76vw,290px);aspect-ratio:9/17;border:3px solid #2b2b30;border-radius:34px;background:#050102;box-shadow:0 0 44px rgba(211,18,47,.35);padding:16px 12px;display:flex;flex-direction:column;gap:10px;opacity:0}
+.phone.show{opacity:1;animation:fadein .6s both}
+.phone.ring{animation:buzz .12s linear 14;box-shadow:0 0 64px rgba(211,18,47,.75)}
+.phone .ph-h,.phone .msgs{opacity:0;transition:opacity .9s}
+.phone.on .ph-h,.phone.on .msgs{opacity:1}
+@keyframes buzz{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-4px,2px) rotate(-1.5deg)}50%{transform:translate(4px,-2px) rotate(1.5deg)}75%{transform:translate(-3px,-1px) rotate(-1deg)}100%{transform:translate(0,0)}}
+@keyframes fadein{from{opacity:0;transform:translateY(14px)}}
+.ph-h{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid #2a0c12}
+.av{width:36px;height:36px;border-radius:50%;background:var(--bord);display:grid;place-items:center;font-family:"Pirata One",serif;font-size:22px;color:#fff}
+.ph-h b{display:block;font-weight:400;font-size:16px}.ph-h small{font-size:11px;color:var(--dim)}
+.msgs{display:flex;flex-direction:column;gap:8px;flex:1}
+.msg{display:none;align-self:flex-start;max-width:86%;background:#2a0a10;border:1px solid var(--bord);border-radius:14px 14px 14px 4px;padding:8px 12px;font-size:14px}
+.msg.in{display:block;animation:pop .4s both}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}}
+.typ{display:none;align-self:flex-start;gap:5px;padding:10px 12px;background:#1a0508;border-radius:14px}
+.typ.on{display:flex}.typ i{width:6px;height:6px;border-radius:50%;background:var(--dim);animation:bl 1s infinite}.typ i:nth-child(2){animation-delay:.2s}.typ i:nth-child(3){animation-delay:.4s}
+@keyframes bl{50%{opacity:.2}}
+.stage-intro{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:8px}
+#fx{position:fixed;inset:0;z-index:25;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,var(--red) 0 3px,#000 3px 7px)}
+#fx.go{animation:gl .9s steps(1) both}
+@keyframes gl{0%{opacity:0}10%{opacity:.9}25%{opacity:.2}40%{opacity:1;transform:translateX(8px)}55%{opacity:.3}75%{opacity:.8;transform:translateX(-6px)}100%{opacity:0}}
+/* home */
+.home{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100vh;padding:70px 0 40px}
+.big{width:150px}.big svg{width:100%;display:block;filter:drop-shadow(0 0 16px rgba(211,18,47,.5))}
+.home h1{font-size:clamp(72px,23vw,116px);line-height:.95;margin-top:22px;color:var(--red);text-shadow:0 0 24px rgba(211,18,47,.55),2px 2px 0 #000}
+.home .sub{font-size:19px;margin:18px 0 0;max-width:20em}.home .small{font-size:14px;color:var(--dim);margin:12px 0 0;max-width:24em}.home .btn{margin-top:34px}
+#home.on .big{animation:rise 1.3s cubic-bezier(.2,.8,.2,1) both}
+#home.on h1{animation:glow 1.2s .9s both}
+#home.on .sub{animation:fadein 1s 1.8s both}#home.on .small{animation:fadein 1s 2.5s both}#home.on .btn{animation:fadein 1s 3.1s both}
+@keyframes rise{from{opacity:0;transform:translateY(-60px) rotate(-14deg) scale(.7)}}
+@keyframes glow{from{opacity:0;letter-spacing:14px;filter:blur(8px)}}
+/* arquivo */
+.top{padding:74px 0 12px}.top h2{font-size:44px;color:var(--red);text-shadow:0 0 16px rgba(211,18,47,.4)}.top p{margin:6px 0 14px;color:var(--dim);font-size:15px}
+#q{width:100%;height:48px;padding:0 16px;border-radius:24px;border:1px solid var(--bord);background:rgba(20,5,9,.85);color:var(--ink);font:inherit;font-size:16px}
+#q::placeholder{color:var(--dim)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px;padding:22px 4px 10px}
+.t{position:relative;aspect-ratio:3/2;border-radius:8px;border:1px solid #3a0f16;background:linear-gradient(160deg,#1d0a0e,#0b0305);box-shadow:0 8px 14px rgba(0,0,0,.65);transform:rotate(var(--r));cursor:pointer;padding:0}
+.fall .t{animation:drop .6s cubic-bezier(.3,.9,.4,1) both;animation-delay:calc(var(--i)*40ms)}
+@keyframes drop{from{opacity:0;transform:translateY(-70px) rotate(calc(var(--r)*5)) scale(1.15)}}
+.lab{position:absolute;left:8%;right:8%;top:9%;height:48%;border-radius:3px;background:linear-gradient(180deg,var(--red) 0 20%,#d9c7bd 20%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:7px;overflow:hidden}
+.lab b{font-weight:400;font-size:13px;color:#2a0a10;max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lab em{font-style:normal;font-size:9px;color:#7a5a58}
+.wn{position:absolute;left:24%;right:24%;bottom:7%;height:22%;border-radius:4px;background:#050203;border:1px solid #444;display:flex;justify-content:space-around;align-items:center}
+.wn i{width:11px;height:11px;border-radius:50%;border:2px dashed var(--silver)}
+.empty{grid-column:1/-1;text-align:center;color:var(--dim);font-size:14px;padding:30px 0}
+/* toca-fitas */
+#pname{text-align:center;font-size:44px;color:var(--red);text-shadow:0 0 16px rgba(211,18,47,.4);margin:4px 0 20px;position:relative;z-index:1}
+.deck{position:relative;width:min(100%,380px);margin:0 auto;padding:14px 12px 14px;border-radius:16px;background:linear-gradient(180deg,#2b2d31,#111214);border:2px solid #3d4046;box-shadow:0 14px 34px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.18)}
+.win{position:relative;aspect-ratio:3/2;border-radius:10px;background:#050203;border:2px solid #000;box-shadow:inset 0 8px 16px #000}
+#ins{position:absolute;inset:6px;z-index:6}
+#ins svg.deckcas{width:100%;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))}
+#ins.load{animation:ins 1.5s cubic-bezier(.5,0,.3,1) both}
+@keyframes ins{0%{transform:translateY(-330px) rotate(-5deg)}72%{transform:translateY(8px) rotate(0)}100%{transform:none}}
+.hand{position:absolute;left:30%;width:40%;top:-62px}
+#ins.load .hand{animation:leave .7s 1.6s ease-in both}
+@keyframes leave{to{transform:translateY(-300px);opacity:0}}
+.reel{transform-origin:center;transform-box:fill-box}
+.playing .reel{animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.keys{display:flex;gap:6px;margin-top:14px}
+.deck:not(.ready) .keys{pointer-events:none;opacity:.55}
+.key{flex:1;min-height:70px;border-radius:7px 7px 3px 3px;border:1px solid #000;background:linear-gradient(180deg,#9a9da3,#575a61 60%,#383b40);color:#12080a;font-size:22px;box-shadow:0 5px 0 #0a0b0d,0 7px 10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.key small{font-size:10px}#kplay{color:#8a0c1e}
+.key.down{transform:translateY(4px);box-shadow:0 1px 0 #0a0b0d,inset 0 3px 8px rgba(0,0,0,.6);background:linear-gradient(180deg,#44474d,#6a6d73)}
+.lcd{margin-top:16px;padding:8px 12px 10px;background:#1a0306;border:1px solid #000;border-radius:6px;box-shadow:inset 0 2px 8px #000;color:#ff3b55;text-shadow:0 0 8px var(--red)}
+.lcd .n{display:flex;justify-content:space-between;align-items:baseline;font-size:26px;letter-spacing:2px}.lcd .n small{font-size:14px;opacity:.75}
+.pb{height:18px;display:flex;align-items:center;cursor:pointer}.pb i{display:block;width:100%;height:4px;background:#3a0a12;border-radius:2px;overflow:hidden}.pb em{display:block;height:100%;width:0;background:#ff3b55;box-shadow:0 0 8px var(--red)}
+#pmsg{min-height:22px;text-align:center;font-size:13px;color:var(--dim);margin-top:16px}
+@media(prefers-reduced-motion:reduce){.bat,.playing .reel,.fall .t{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="glitter" aria-hidden="true"></canvas>
+<div id="fx" aria-hidden="true"></div>
+<button id="snd" aria-pressed="false" aria-label="Ligar ou desligar o som de fundo">♪ som</button>
+<div class="bats" aria-hidden="true"><svg class="bat" viewBox="0 0 64 32"><use href="#bat"/></svg><svg class="bat" viewBox="0 0 64 32"><use href="#bat"/></svg><svg class="bat" viewBox="0 0 64 32"><use href="#bat"/></svg></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="bat" viewBox="0 0 64 32"><path d="M32 8c-2 0-3 2-4 4-3-3-8-5-14-4 3 2 4 5 4 8-4-1-8-1-14 2 6 0 10 3 12 6 2-3 6-4 9-2 2 2 3 5 5 8 2-3 3-6 5-8 3-2 7-1 9 2 2-3 6-6 12-6-6-3-10-3-14-2 0-3 1-6 4-8-6-1-11 1-14 4-1-2-2-4-4-4z"/></symbol>
+<symbol id="cassette" viewBox="0 0 120 80">
+<rect x="2" y="4" width="116" height="72" rx="8" fill="#14070a" stroke="#6b0f1f" stroke-width="2"/>
+<rect x="12" y="10" width="96" height="34" rx="4" fill="#3a0712" stroke="#d3122f" stroke-width="1"/>
+<rect x="12" y="10" width="96" height="9" fill="#d3122f" opacity=".85"/>
+<rect x="30" y="47" width="60" height="22" rx="11" fill="#050203" stroke="#555" stroke-width="1"/>
+<circle cx="40" cy="58" r="13" fill="#0a0305" stroke="#c9ccd1" stroke-width="1.5"/>
+<circle cx="80" cy="58" r="13" fill="#0a0305" stroke="#c9ccd1" stroke-width="1.5"/>
+<g class="reel"><circle cx="40" cy="58" r="7" fill="none" stroke="#c9ccd1" stroke-width="2" stroke-dasharray="4 3.5"/><circle cx="40" cy="58" r="2" fill="#d3122f"/></g>
+<g class="reel"><circle cx="80" cy="58" r="7" fill="none" stroke="#c9ccd1" stroke-width="2" stroke-dasharray="4 3.5"/><circle cx="80" cy="58" r="2" fill="#d3122f"/></g>
+</symbol>
+</svg>
+
+<main>
+<!-- 0. TOQUE PARA ENTRAR -->
+<section id="splash" class="view on"><div class="center">
+  <svg width="64" height="32" viewBox="0 0 64 32" fill="#d3122f" aria-hidden="true"><use href="#bat"/></svg>
+  <p>Este lugar tem som. Se puder, use fones.</p>
+  <button class="btn" id="start">entrar</button>
+</div></section>
+
+<!-- 1. CELULAR -->
+<section id="intro" class="view"><div class="stage-intro">
+  <div class="phone" id="phone">
+    <div class="ph-h"><div class="av">A</div><div><b>A</b><small>número desconhecido</small></div></div>
+    <div class="msgs">
+      <div class="msg">Nicolly…</div>
+      <div class="msg">ou posso dizer Vamp? 🦇</div>
+      <div class="msg">Alguém deixou uma coisa muito importante guardada aqui pra você.</div>
+      <div class="msg">Talvez seja importante demais… mas pode deixar. Eu te mostro.</div>
+      <div class="typ" id="typ"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <button class="link" id="skip">pular</button>
+</div></section>
+
+<!-- 2. INÍCIO -->
+<section id="home" class="view"><div class="home">
+  <div class="big" id="bigcas"></div>
+  <h1>Nicolly</h1>
+  <p class="sub">Este lugar foi feito só pra você.</p>
+  <p class="small">Tem gente aqui que guardou a voz pra quando você precisasse ouvir.</p>
+  <button class="btn" id="open">abrir arquivo</button>
+</div></section>
+
+<!-- 3. ARQUIVO -->
+<section id="archive" class="view">
+  <div class="top">
+    <button class="link" id="back">← voltar</button>
+    <h2>Arquivo de vozes</h2>
+    <p>Escolha uma fita e ouça a voz de quem te ama.</p>
+    <input id="q" type="search" placeholder="buscar pelo nome" autocomplete="off" aria-label="Buscar fita pelo nome">
+  </div>
+  <div class="grid fall" id="grid"></div>
+</section>
+
+<!-- 4. TOCA-FITAS -->
+<section id="player" class="view">
+  <div class="top" style="padding-bottom:0"><button class="link" id="pback">← voltar às fitas</button></div>
+  <h2 id="pname"></h2>
+  <div class="deck" id="deck">
+    <div class="win"><div id="ins"></div></div>
+    <div class="keys">
+      <button class="key" id="krew" aria-label="Voltar">⏪<small>voltar</small></button>
+      <button class="key" id="kplay" aria-label="Tocar ou pausar">▶<small>tocar</small></button>
+      <button class="key" id="kff" aria-label="Avançar">⏩<small>avançar</small></button>
+      <button class="key" id="kstop" aria-label="Parar">■<small>parar</small></button>
+      <button class="key" id="keject" aria-label="Tirar a fita e guardar o áudio">⏏<small>guardar</small></button>
+    </div>
+    <div class="lcd"><div class="n"><span id="pcur">0:00</span><small id="pdur">/ --:--</small></div><div class="pb" id="pbar"><i><em id="pfill"></em></i></div></div>
+  </div>
+  <p id="pmsg" aria-live="polite"></p>
+</section>
+</main>
+
+<script>
+/* ===== FITAS =====
+   São 80 fitas de exemplo ("Pessoa 1" ... "Pessoa 80").
+   Para colocar uma pessoa de verdade, troque a linha dela, por exemplo:
+   TAPES[0] = { name: "Maria", src: "https://.../maria.mp3" };
+   Sem "src", a fita aparece como "em breve". */
+const TAPES = Array.from({length: 80}, (_, i) => ({ name: "Pessoa " + (i + 1), src: "" }));
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = t => isFinite(t) ? Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2,"0") : "0:00";
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+function go(id){ document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === id)); scrollTo(0,0); }
+const cas = (cls, label) => `<svg class="${cls}" viewBox="0 0 120 80" aria-hidden="true">${$("#cassette").innerHTML}${label ? `<text x="60" y="35" text-anchor="middle" fill="#f1dfe0" font-family="Pirata One,Georgia,serif" font-size="${label.length > 14 ? 11 : 15}">${esc(label)}</text>` : ""}</svg>`;
+const HAND = `<svg class="hand" viewBox="0 0 120 80" aria-hidden="true"><rect x="36" y="0" width="48" height="22" fill="#0a0305" stroke="#6b0f1f"/><rect x="40" y="20" width="40" height="30" rx="14" fill="#e3cbc4"/><rect x="38" y="42" width="15" height="34" rx="7.5" fill="#e3cbc4"/><rect x="67" y="42" width="15" height="34" rx="7.5" fill="#e3cbc4"/><rect x="40.5" y="66" width="10" height="8" rx="4" fill="#8a0c1e"/><rect x="69.5" y="66" width="10" height="8" rx="4" fill="#8a0c1e"/></svg>`;
+
+/* ===== SOM: guitarra de fundo + cliques ===== */
+let ctx, mg, echo, timer, step = 0, muted = false, lvl = .9;
+const SCALE = [220, 261.63, 329.63, 392, 329.63, 261.63, 246.94, 293.66, 392, 493.88, 392, 293.66];
+function vol(v){ lvl = v; if (mg) mg.gain.setTargetAtTime(muted ? 0 : v, ctx.currentTime, .6); }
+function pluck(f){
+  const t = ctx.currentTime, g = ctx.createGain(), lp = ctx.createBiquadFilter(), o1 = ctx.createOscillator(), o2 = ctx.createOscillator();
+  o1.type = "triangle"; o2.type = "sawtooth"; o1.frequency.value = f; o2.frequency.value = f * 1.004;
+  lp.type = "lowpass"; lp.frequency.setValueAtTime(2600, t); lp.frequency.exponentialRampToValueAtTime(380, t + 1.4);
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.09, t + .015); g.gain.exponentialRampToValueAtTime(.0001, t + 1.8);
+  o1.connect(lp); o2.connect(lp); lp.connect(g); g.connect(mg); g.connect(echo);
+  o1.start(t); o2.start(t); o1.stop(t + 1.9); o2.stop(t + 1.9);
+}
+function initAudio(){
+  try{
+    ctx = new (window.AudioContext || window.webkitAudioContext)(); mg = ctx.createGain(); mg.gain.value = 0; mg.connect(ctx.destination);
+    echo = ctx.createDelay(); echo.delayTime.value = .42; const fb = ctx.createGain(), w = ctx.createGain(); fb.gain.value = .38; w.gain.value = .5;
+    echo.connect(fb); fb.connect(echo); echo.connect(w); w.connect(mg); ctx.resume(); vol(.9);
+    timer = setInterval(() => { pluck(SCALE[step % SCALE.length]); if (step % 12 === 0) pluck(110); step++; }, 700);
+  }catch(e){}
+}
+function clack(f){
+  if (!ctx) return;
+  const n = ctx.createBuffer(1, 2400, 44100), d = n.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random()*2-1) * Math.pow(1 - i/d.length, 3);
+  const s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain();
+  s.buffer = n; bp.type = "bandpass"; bp.frequency.value = f || 1400; g.gain.value = .6; s.connect(bp); bp.connect(g); g.connect(ctx.destination); s.start();
+}
+$("#snd").onclick = e => { muted = !muted; e.currentTarget.setAttribute("aria-pressed", muted); e.currentTarget.textContent = muted ? "♪ mudo" : "♪ som"; vol(lvl); };
+
+/* ===== INTRO (celular) ===== */
+let tm = [];
+const at = (ms, fn) => tm.push(setTimeout(fn, ms));
+$("#start").onclick = () => { initAudio(); $("#snd").classList.add("show"); go("intro"); runIntro(); };
+function runIntro(){
+  const m = document.querySelectorAll(".msg"), typ = $("#typ"), ph = $("#phone");
+  // 1) morcegos voando
+  const bs = document.querySelector(".bats");
+  [8, 22, 46, 70, 84].forEach((tp, i) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("class", "bat sw"); s.setAttribute("viewBox", "0 0 64 32"); s.style.top = tp + "%"; s.style.animationDuration = (9 + i * 2) + "s"; s.style.animationDelay = (-i * 1.5) + "s"; s.innerHTML = '<use href="#bat"/>'; bs.appendChild(s); });
+  // 2) celular vibrando, 3) tela acende, 4) mensagens
+  const say = (i, t, d) => { at(t, () => typ.classList.add("on")); at(t + d, () => { typ.classList.remove("on"); m[i].classList.add("in"); }); };
+  at(3800, () => { ph.classList.add("show", "ring"); buzz(); });
+  at(6000, () => { ph.classList.remove("ring"); ph.classList.add("on"); });
+  say(0, 7200, 1200); say(1, 9200, 1800); say(2, 12000, 2000); say(3, 15600, 2400);
+  at(20500, endIntro);
+}
+function buzz(){
+  try{ navigator.vibrate && navigator.vibrate([200, 100, 200, 100, 200, 100, 200]); }catch(e){}
+  if (!ctx) return;
+  for (let i = 0; i < 7; i++) { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = "square"; o.frequency.value = 90; g.gain.value = .05; o.connect(g); g.connect(ctx.destination); o.start(ctx.currentTime + i * .2); o.stop(ctx.currentTime + i * .2 + .1); }
+}
+function endIntro(){
+  tm.forEach(clearTimeout); tm = [];
+  document.querySelectorAll(".bat.sw").forEach(b => b.remove());
+  $("#fx").classList.add("go"); clack(300);
+  setTimeout(() => { go("home"); }, 450);
+  setTimeout(() => $("#fx").classList.remove("go"), 950);
+}
+$("#skip").onclick = endIntro;
+$("#bigcas").innerHTML = cas("", "Para Nicolly");
+
+/* ===== ARQUIVO ===== */
+$("#open").onclick = () => { vol(.3); clack(600); go("archive"); render($("#q").value); };
+$("#back").onclick = () => { vol(.9); go("home"); };
+const grid = $("#grid");
+function render(q){
+  grid.innerHTML = ""; grid.classList.remove("fall"); void grid.offsetWidth; grid.classList.add("fall");
+  const list = TAPES.map((t, i) => ({ t, i })).filter(x => norm(x.t.name).includes(norm(q || "")));
+  if (!list.length) { grid.innerHTML = `<p class="empty">Nenhuma fita com esse nome.</p>`; return; }
+  list.forEach((x, k) => {
+    const b = document.createElement("button");
+    b.className = "t"; b.style.setProperty("--r", ((x.i * 37) % 9 - 4) + "deg"); b.style.setProperty("--i", Math.min(k, 14));
+    b.setAttribute("aria-label", "Abrir a fita de " + x.t.name);
+    b.innerHTML = `<span class="lab"><b>${esc(x.t.name)}</b>${x.t.src ? "" : "<em>em breve</em>"}</span><span class="wn"><i></i><i></i></span>`;
+    b.onclick = () => openTape(x.t);
+    grid.appendChild(b);
+  });
+}
+$("#q").oninput = e => render(e.target.value);
+
+/* ===== TOCA-FITAS ===== */
+const A = new Audio(); A.preload = "metadata";
+const P = $("#player"), deck = $("#deck"), msg = $("#pmsg");
+const K = { rew: $("#krew"), play: $("#kplay"), ff: $("#kff"), stop: $("#kstop"), eject: $("#keject") };
+let T = null;
+function setPlaying(on){ P.classList.toggle("playing", on); K.play.classList.toggle("down", on); vol(on ? .07 : .3); }
+function openTape(t){
+  T = t; A.pause(); A.src = t.src || ""; msg.textContent = ""; deck.classList.remove("ready"); K.play.classList.remove("down"); P.classList.remove("playing");
+  $("#pname").textContent = t.name; $("#pfill").style.width = "0"; $("#pcur").textContent = "0:00"; $("#pdur").textContent = "/ --:--";
+  const ins = $("#ins"); ins.classList.remove("load"); ins.innerHTML = HAND + cas("deckcas", t.name); void ins.offsetWidth; ins.classList.add("load");
+  go("player"); clack(500);
+  setTimeout(() => clack(250), 1150); setTimeout(() => { deck.classList.add("ready"); clack(1800); }, 1700);
+}
+A.onloadedmetadata = () => $("#pdur").textContent = "/ " + fmt(A.duration);
+A.ontimeupdate = () => { $("#pfill").style.width = (A.currentTime / A.duration * 100 || 0) + "%"; $("#pcur").textContent = fmt(A.currentTime); };
+A.onended = () => setPlaying(false);
+$("#pbar").onclick = e => { const r = e.currentTarget.getBoundingClientRect(); if (isFinite(A.duration)) A.currentTime = (e.clientX - r.left) / r.width * A.duration; };
+K.play.onclick = () => {
+  clack(1400);
+  if (!T || !T.src) { msg.textContent = "Essa fita ainda está sem áudio."; return; }
+  if (A.paused) A.play().then(() => setPlaying(true)).catch(() => { msg.textContent = "Não consegui tocar este áudio."; });
+  else { A.pause(); setPlaying(false); }
+};
+K.stop.onclick = () => { clack(900); A.pause(); try{ A.currentTime = 0; }catch(e){} setPlaying(false); };
+function hold(btn, dir){ // toque rápido pula 5s; segurar passa a fita
+  let w, h;
+  const jump = n => { if (T && T.src && isFinite(A.duration)) A.currentTime = Math.max(0, Math.min(A.duration, A.currentTime + dir * n)); };
+  const end = () => { clearTimeout(w); clearInterval(h); btn.classList.remove("down"); };
+  btn.onpointerdown = () => { clack(2200); btn.classList.add("down"); jump(5); w = setTimeout(() => { h = setInterval(() => jump(3), 120); }, 350); };
+  btn.onpointerup = btn.onpointerleave = btn.onpointercancel = end;
+}
+hold(K.rew, -1); hold(K.ff, 1);
+K.eject.onclick = () => { // tirar a fita = guardar o áudio
+  clack(700);
+  if (T && T.src) { const a = document.createElement("a"); a.href = T.src; a.download = T.name + ".mp3"; document.body.appendChild(a); a.click(); a.remove(); }
+  else msg.textContent = "Essa fita ainda está sem áudio.";
+};
+$("#pback").onclick = () => { A.pause(); setPlaying(false); vol(.3); go("archive"); render($("#q").value); };
+
+/* ===== GLITTER VERMELHO ===== */
+(function(){
+  const c = $("#glitter"), x = c.getContext("2d"); let W, H; const P = [];
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const size = () => { W = c.width = innerWidth; H = c.height = innerHeight; }; size(); addEventListener("resize", size);
+  for (let i = 0; i < (innerWidth < 600 ? 30 : 55); i++) P.push({ x: Math.random(), y: Math.random(), r: Math.random()*1.6 + .5, s: Math.random()*.0004 + .0001, p: Math.random()*6.28, k: Math.random() < .2 });
+  function draw(t){
+    x.clearRect(0, 0, W, H);
+    for (const q of P){
+      q.y -= q.s; if (q.y < -.02) { q.y = 1.02; q.x = Math.random(); }
+      x.globalAlpha = .25 + .75 * Math.abs(Math.sin(t/700 + q.p)); x.fillStyle = q.k ? "#c9ccd1" : "#e0173a"; x.shadowColor = "#d3122f"; x.shadowBlur = 8;
+      x.beginPath(); x.arc(q.x*W, q.y*H, q.r, 0, 6.283); x.fill();
+    }
+    if (!calm) requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
